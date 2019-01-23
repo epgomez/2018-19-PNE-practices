@@ -1,14 +1,12 @@
-n=input('Enter your chain')
-
-n.lower()
+n: str=input('Enter your chain. If you enter a letter that doesn\'t represent a base, it will be deleted and not counted for the leght')
+n = n.lower()
 lenght=len(n)
 for i in n:
-    if (i!='a' or i!='c' or i!='t' or i!='g'):
+    if not (i=='a' or i=='c' or i=='t' or i=='g'):
         n=n.replace(i,'')
-    else:
-        a = n.count('a')
-        c= n.count('c')
-        g= n.count('g')
-        t = n.count('t')
+a = n.count('a')
+c= n.count('c')
+g= n.count('g')
+t = n.count('t')
 lenght=len(n)
-print(lenght, a, c, t, g)
+print(lenght,'\n', a,'\n', c,'\n', t,'\n', g)
