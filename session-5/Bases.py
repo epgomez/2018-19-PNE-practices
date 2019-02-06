@@ -31,8 +31,6 @@ def perc(seq):
     return list_per
 
 
-
-
 def main():
     seq = input('Enter your sequence: ')
     lenght= len(seq)
@@ -45,4 +43,20 @@ def main():
         print ('Base {}\n   Counter: {}\n   Percentage: {}'.format(i,elem,per))
 
 
-main()
+def main_2():
+    seq1 = input('Enter your first sequence: ')
+    seq2 = input('Enter your second sequence: ')
+    sequences=[seq1, seq2]
+    order=['first', 'second']
+
+    for i, number in zip(sequences, order):
+        lenght= len(i)
+        a, c, t, g = count(i)
+        bases = ['A','C','T','G']
+        list = [a, c, t, g]
+        list_perc = perc(i)
+
+        print('\nThe {} sequence is of lenght {}\n'.format(number, lenght))
+
+        for elem, per, i in zip (list, list_perc, bases):
+            print ('Base {}\n   Counter: {}\n   Percentage: {}'.format(i,elem,per))
