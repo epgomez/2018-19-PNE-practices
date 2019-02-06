@@ -34,9 +34,12 @@ class Seq:
         return self.strbases.upper().count(base)
 
     def perc(self, base):
-        count=count(base)
-        tl = len(self.strbases)
-        return round(100.0 * count/tl, 1)
+        seq = self.strbases.upper()
+        base=base.upper()
+        counter= seq.count(base)
+        tl = len(seq)
+        return round(100.0 * counter/tl, 1)
 
 
-
+s1 = Seq('ACTGTCGTCAA')
+print(s1.perc('c'))
