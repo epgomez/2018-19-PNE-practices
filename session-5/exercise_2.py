@@ -15,14 +15,14 @@ def count(seq):
             resultt += 1
         if b == 'G':
             resultg += 1
-
-    return resulta, resultc, resultt, resultg
+    dictt={'A':resulta,'C':resultc,'T':resultt,'G':resultg}
+    return dictt
 
 
 def perc(seq):
     """Calculating lenght and percentages"""
     tl= len(seq)
-    a,c,t,g=count(seq)
+    a,c,t,g=count(seq)['A'], count(seq)['C'], count(seq)['T'], count(seq)['G']
     list=[a, c, t, g]
     per_a, per_c, per_t, per_t=0,0,0,0
     list_per=[per_a, per_c, per_t, per_t]
@@ -41,7 +41,7 @@ def main_2():
 
     for i, number in zip(sequences, order):
         lenght= len(i)
-        a, c, t, g = count(i)
+        a, c, t, g = count(i)['A'], count(i)['C'], count(i)['T'], count(i)['G']
         bases = ['A','C','T','G']
         list = [a, c, t, g]
         list_perc = perc(i)
