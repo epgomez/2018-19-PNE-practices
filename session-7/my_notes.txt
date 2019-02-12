@@ -1,0 +1,43 @@
+program C = client
+program S = server
+
+client-server model
+
+client starts communication. Sends a request. The server returns a response message.
+Different clients can communicate with the server at the same time.
+If no clients exist, there's no problem.
+But if there is no server, there are problems and errors.
+
+
+These programs are running inside a computer (general term, can be phones,etc...). There can be more than one C and S in each computer,
+but the communication model is the same.
+They can be in the same computer
+They communicate through internet
+
+
+Internet is composed of networks (groups of isolated computers)
+
+Network interface: the connections made by different computers
+IP address: refers to the NI, that changes when you change the computer you're using
+
+10.0.46.22 IP mobile uni
+Ip computer 212.128.253.81
+Teacher's IP 212.128.253.64
+
+
+"ping": command that asks if the server is alive, working
+
+ping time to 8.8.8.8 : 3.47 ms
+ping time to my computer (212.128.253.81) : 0.058 ms
+ping time to edu (212.128.253.82) : 0.579 ms
+ping tim e for my mobile (10.0.46.22) : 487 ms
+
+URL: used to identify a computer interface for humans
+DNS servers: servers that "translate" the URL into an IP address
+
+IP of www.google.com : 216.58.214.164
+
+PORT (puerto): number that identifies any of the apps that can communicate
+WEB servers usually are on port 80
+
+You write the IP nmberr you want and then the port number in order to connect to an specific app
