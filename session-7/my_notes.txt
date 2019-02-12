@@ -41,3 +41,4 @@ PORT (puerto): number that identifies any of the apps that can communicate
 WEB servers usually are on port 80
 
 You write the IP nmberr you want and then the port number in order to connect to an specific app
+THIS IS AN EXAMPLE ADDED TO MY FILE
