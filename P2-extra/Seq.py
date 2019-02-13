@@ -41,5 +41,3 @@ class Seq:
         return round(100.0 * counter/tl, 1)
 
 
-s1 = Seq('ACTGTCGTCAA')
-print(s1.reverse())

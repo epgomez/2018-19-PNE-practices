@@ -1,5 +1,7 @@
-a='abcdebfbg'
-for elem, index in enumerate(a):
-    a=a.replace('b','t')
+from Seq import Seq
+seq = Seq(input('enter your seuqence: '))
 
-print(a)
+reverse = seq.reverse()
+comp = seq.complement()
+
+print (reverse, comp)

@@ -15,10 +15,9 @@ try:
     # become a server socket
     # MAX_OPEN_REQUESTS connect requests before refusing outside connections
     serversocket.listen(MAX_OPEN_REQUESTS)
-
+    print("Waiting for connections at {}, {} ".format(IP, PORT))
     while True:
         # accept connections from outside
-        print("Waiting for connections at {}, {} ".format(IP, PORT))
         (clientsocket, address) = serversocket.accept()
 
         # Another connection!e
@@ -31,7 +30,7 @@ try:
         msg = clientsocket.recv(2048).decode("utf-8")
         print("Message from client: {}".format(msg))
 
-        # Send the message
+        # Send the messag
         message = "Hello from the teacher's server"
         send_bytes = str.encode(message)
         # We must write bytes, not a string
