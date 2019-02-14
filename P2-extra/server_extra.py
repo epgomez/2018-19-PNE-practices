@@ -3,7 +3,7 @@ from Seq import Seq
 
 # Configure the Server's IP and PORT
 PORT = 8081
-IP = "212.128.253.103"
+IP = "192.168.0.15"
 MAX_OPEN_REQUESTS = 5
 
 # Counting the number of connections

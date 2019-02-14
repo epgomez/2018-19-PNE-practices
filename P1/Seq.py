@@ -38,6 +38,9 @@ class Seq:
         base=base.upper()
         counter= seq.count(base)
         tl = len(seq)
-        return round(100.0 * counter/tl, 1)
+        if tl>0:
+            return round(100.0 * counter/tl, 1)
+        else:
+            return 0
 
 

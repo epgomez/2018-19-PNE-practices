@@ -1,0 +1,1 @@
+print('Base {} count: {}'.format(i,elem.count(i)))

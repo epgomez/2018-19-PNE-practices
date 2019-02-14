@@ -14,5 +14,5 @@ for elem, i in zip(seqs, order):
     bases = ['A', 'C', 'T', 'G']
     for i in bases:
         print('\nNumber of {}: {}'.format(i,elem.count(i)))
-        print('Percentage of {}: {}'.format(i,elem.perc(i)))
+        print('Percentage of {}: {}%'.format(i,elem.perc(i)))
     print('\n')
