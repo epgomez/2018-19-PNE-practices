@@ -7,17 +7,15 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('socket created')
 
 port = 8080
-IP = "212.128.253.64"
+IP = "212.128.253.93"
 
 
 #conncet to the server
 s.connect((IP, port))
 
-s.send(str.encode('hehehe'))
+s.send(str.encode('message sent'))
 
 msg = s.recv(2048).decode('utf-8')
 print(msg)
 
 s.close()
-
-print('the end')

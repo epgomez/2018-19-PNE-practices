@@ -8,6 +8,7 @@ IP = "212.128.253.103"
 
 #ask the user for a sequence
 while True:
+    #ALWAYS ASK THE USEWR FOR THE MESSAGE BEFORE SENDING IT TO THE SERVER, BECAUSE OTHERWISE YOU'RE BLOCKING THE SERVER
     seq = Seq(input('enter your sequence: '))
 
     reverse = seq.reverse()
