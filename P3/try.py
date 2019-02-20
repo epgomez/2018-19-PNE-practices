@@ -1,5 +1,8 @@
-msg = input('> ')
-msg = msg.replace(',','\n')
-msg = msg.replace(' ','')
+def letters(ms):
+    ms = ms.upper()
+    if (ms.strip('ACTG')==''):
+        return False
+    else:
+        return True
 
-print(msg)
+print(letters('actggtgtgagagagtgtatagatacgagatgc'))

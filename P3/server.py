@@ -1,20 +1,16 @@
 import socket
 from Seq import Seq
 
-PORT = 8081
+PORT = 8034
 IP = '212.128.253.112'
 MAX_CLIENTS = 5
 
-
-
-
 def letters(ms):
     ms = ms.upper()
-    if not ('A' in ms and 'C' in ms and 'T' in ms and 'G' in ms):
-        return True
-    else:
+    if ms.strip('ACTG')=='':
         return False
-
+    else:
+        return True
 
 def info(cs):
     """This function takes the message sent by the user and returns the sequence and a list of the different operations that
@@ -33,7 +29,6 @@ def info(cs):
     else:
         return 'OK', seq, ops
 
-
 def operations(s, cs):
     """This function makes the operations we are requested to do"""
     result, seq, ops = info(cs)
@@ -46,7 +41,7 @@ def operations(s, cs):
                         'percG']
         methods = [seq.len(), seq.complement(), seq.reverse(), seq.count('A'), seq.count('C'), seq.count('T'),
                    seq.count('G'), seq.perc('A'), seq.perc('C'), seq.perc('T'), seq.perc('G')]
-        count = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         out = '{}\nThe sequence is: {}\n'.format(result, seq.strbases)
         for i in ops:
             for name, op, num in zip(methods_name, methods, count):
@@ -54,19 +49,21 @@ def operations(s, cs):
                     out += str(methods[num]) + '\n'
         return out
 
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((IP, PORT))
 s.listen((MAX_CLIENTS))
 
 print('waiting for connections at : {}, {}'.format(IP, PORT))
-
 (client_socket, address) = s.accept()
 
 print("CONNECTION From the IP: {}".format(address))
 
 msg = operations(s, client_socket)
+
 info = str.encode(msg)
 client_socket.send(info)
-
+print('Message sent')
 client_socket.close()
+
 
