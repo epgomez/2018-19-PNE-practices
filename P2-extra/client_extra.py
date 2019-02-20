@@ -3,8 +3,8 @@ from Seq import Seq
 # Create a socket for communicating with the server
 
 print('socket created')
-port = 8081
-IP = "192.168.0.15"
+port = 8080
+IP = "212.128.253.112"
 
 while True:
     #ask the user for a sequence

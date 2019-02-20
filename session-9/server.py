@@ -1,17 +1,19 @@
 import socket
+import termcolor
+import sys
 
 PORT = 8080
-IP = '212.128.253.93'
+IP = '212.128.253.112'
 MAX_open_request = 5
 
 
 def process_client(cs):
     # reciving the message
     msg = cs.recv(2048).decode('utf-8')
-    # printing it
-    print('Message form the client: {}'.format(msg))
-    # sending it back, because we are an echo server
-    cs.send(str.encode(msg))
+    if msg == 'EXIT':
+        sys.exit(0)
+    else:
+        termcolor.cprint(msg, 'blue')
 
     cs.close()
 
