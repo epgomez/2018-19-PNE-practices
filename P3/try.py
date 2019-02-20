@@ -1,6 +1,5 @@
+msg = input('> ')
+msg = msg.replace(',','\n')
+msg = msg.replace(' ','')
 
-
-def em():
-    return 'a', 'b'
-
-a,b,c=em()
+print(msg)

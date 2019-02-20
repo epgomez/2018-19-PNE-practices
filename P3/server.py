@@ -2,18 +2,18 @@ import socket
 from Seq import Seq
 
 PORT = 8081
-IP = '192.168.0.15'
+IP = '212.128.253.112'
 MAX_CLIENTS = 5
 
 
 
 
 def letters(ms):
-    for i in ms.upper():
-        if not (i == 'A' or i == 'C' or i == 'T' or i == 'G'):
-            return True
-        else:
-            return False
+    ms = ms.upper()
+    if not ('A' in ms and 'C' in ms and 'T' in ms and 'G' in ms):
+        return True
+    else:
+        return False
 
 
 def info(cs):
@@ -26,32 +26,32 @@ def info(cs):
     ops = msg[2].split('\n')
 
     if msg[0] == '':
-        return 'ALIVE'
+        return 'ALIVE', '', ''
 
     elif letters(msg[0]):
-        return 'ERROR'
+        return 'ERROR', '', ''
     else:
         return 'OK', seq, ops
 
 
 def operations(s, cs):
     """This function makes the operations we are requested to do"""
+    result, seq, ops = info(cs)
 
-    if info(cs) == 'ALIVE' or info(cs) == 'ERROR':
-        return info(cs)
-
+    if result == 'ALIVE' or result == 'ERROR':
+        return result
     else:
-        result, seq, ops = info(cs)
-        methods_name = ['len', 'complement', 'reverse', 'countA', 'countC', 'countT', 'countG', 'percA', 'percC', 'percT',
+        methods_name = ['len', 'complement', 'reverse', 'countA', 'countC', 'countT', 'countG', 'percA', 'percC',
+                        'percT',
                         'percG']
         methods = [seq.len(), seq.complement(), seq.reverse(), seq.count('A'), seq.count('C'), seq.count('T'),
                    seq.count('G'), seq.perc('A'), seq.perc('C'), seq.perc('T'), seq.perc('G')]
-        count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-        out = result + '\n'
+        count = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        out = '{}\nThe sequence is: {}\n'.format(result, seq.strbases)
         for i in ops:
             for name, op, num in zip(methods_name, methods, count):
                 if i == name:
-                    out += methods[num] + '\n'
+                    out += str(methods[num]) + '\n'
         return out
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -60,13 +60,13 @@ s.listen((MAX_CLIENTS))
 
 print('waiting for connections at : {}, {}'.format(IP, PORT))
 
-while True:
-    (client_socket, address) = s.accept()
+(client_socket, address) = s.accept()
 
-    print("CONNECTION From the IP: {}".format(address))
+print("CONNECTION From the IP: {}".format(address))
 
-    msg = operations(s, client_socket)
-    print (msg)
+msg = operations(s, client_socket)
+info = str.encode(msg)
+client_socket.send(info)
 
-    client_socket.close()
+client_socket.close()
 
