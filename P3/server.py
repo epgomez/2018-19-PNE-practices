@@ -56,16 +56,15 @@ s.listen((MAX_CLIENTS))
 
 print('waiting for connections at : {}, {}'.format(IP, PORT))
 
-while True:
-    (client_socket, address) = s.accept()
+(client_socket, address) = s.accept()
 
-    print("CONNECTION From the IP: {}".format(address))
+print("CONNECTION From the IP: {}".format(address))
 
-    msg = operations(s, client_socket)
+msg = operations(s, client_socket)
 
-    info = str.encode(msg)
-    client_socket.send(info)
-    print('Message sent')
-    client_socket.close()
+info = str.encode(msg)
+client_socket.send(info)
+print('Message sent')
+client_socket.close()
 
 
