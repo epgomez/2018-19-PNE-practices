@@ -1,8 +1,8 @@
 import socket
 from Seq import Seq
 
-PORT = 8034
-IP = '212.128.253.112'
+PORT = 8046
+IP = '212.128.253.109'
 MAX_CLIENTS = 5
 
 def letters(ms):
@@ -21,7 +21,7 @@ def info(cs):
     seq = Seq(seq)
     ops = msg[2].split('\n')
 
-    if msg[0] == '':
+    if msg[0] == ' ':
         return 'ALIVE', '', ''
 
     elif letters(msg[0]):
@@ -55,15 +55,17 @@ s.bind((IP, PORT))
 s.listen((MAX_CLIENTS))
 
 print('waiting for connections at : {}, {}'.format(IP, PORT))
-(client_socket, address) = s.accept()
 
-print("CONNECTION From the IP: {}".format(address))
+while True:
+    (client_socket, address) = s.accept()
 
-msg = operations(s, client_socket)
+    print("CONNECTION From the IP: {}".format(address))
 
-info = str.encode(msg)
-client_socket.send(info)
-print('Message sent')
-client_socket.close()
+    msg = operations(s, client_socket)
+
+    info = str.encode(msg)
+    client_socket.send(info)
+    print('Message sent')
+    client_socket.close()
 
 
