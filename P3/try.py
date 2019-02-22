@@ -1,37 +1,26 @@
 import socket
 from Seq import Seq
 
-PORT = 8047
+PORT = 8048
 IP = '212.128.253.107'
 MAX_CLIENTS = 5
 
-def letters(ms):
-    ms = ms.upper()
-    if ms.strip('ACTG')=='':
-        return False
-    else:
-        return True
+def operations(s, cs):
+    """This function makes the operations we are requested to do"""
 
-def info(msg):
-    """This function takes the message sent by the user and returns the sequence and a list of the different operations that
-    are going to be applied to it"""
-
+    msg = cs.recv(2048).decode('utf-8')
     msg = msg.partition('\n')
     seq = msg[0].upper()
     seq = Seq(seq)
     ops = msg[2].split('\n')
 
     if msg[0] == ' ':
-        return 'ALIVE', '', ''
+        result = 'ALIVE'
 
-    elif letters(msg[0]):
-        return 'ERROR', '', ''
+    elif not(msg[0].upper().strip('ACTG')==''):
+        result = 'ERROR'
     else:
-        return 'OK', seq, ops
-
-def operations(s, cs, msg):
-    """This function makes the operations we are requested to do"""
-    result, seq, ops = info(msg)
+        result = 'OK'
 
     if result == 'ALIVE' or result == 'ERROR':
         return result
@@ -59,11 +48,11 @@ while True:
     (client_socket, address) = s.accept()
 
     print("CONNECTION From the IP: {}".format(address))
-    msg = client_socket.recv(2048).decode('utf-8')
 
-    msg = operations(s, client_socket, msg)
+    msg = operations(s, client_socket)
 
     info = str.encode(msg)
     client_socket.send(info)
     print('Message sent')
     client_socket.close()
+
