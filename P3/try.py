@@ -5,6 +5,7 @@ PORT = 8048
 IP = '212.128.253.107'
 MAX_CLIENTS = 5
 
+
 def operations(s, cs):
     """This function makes the operations we are requested to do"""
 
@@ -17,7 +18,7 @@ def operations(s, cs):
     if msg[0] == ' ':
         result = 'ALIVE'
 
-    elif not(msg[0].upper().strip('ACTG')==''):
+    elif not (msg[0].upper().strip('ACTG') == ''):
         result = 'ERROR'
     else:
         result = 'OK'
@@ -25,23 +26,20 @@ def operations(s, cs):
     if result == 'ALIVE' or result == 'ERROR':
         return result
     else:
-        methods_name = ['len', 'complement', 'reverse', 'countA', 'countC', 'countT', 'countG', 'percA', 'percC',
-                        'percT',
-                        'percG']
-        methods = [seq.len(), seq.complement(), seq.reverse(), seq.count('A'), seq.count('C'), seq.count('T'),
-                   seq.count('G'), seq.perc('A'), seq.perc('C'), seq.perc('T'), seq.perc('G')]
-        count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        out = '{}\nThe sequence is: {}\n'.format(result, seq.strbases)
-        for i in ops:
-            for name, op, num in zip(methods_name, methods, count):
-                if i == name:
-                    out += str(methods[num]) + '\n'
-        return out
+        methods= {'len':seq.len(), 'complement':seq.complement(), 'reverse':seq.reverse(), 'countA':seq.count('A'),
+                        'countC':seq.count('C'), 'countT':seq.count('T'), 'countG':seq.count('G'), 'percA':seq.perc('A'),
+                        'percC':seq.perc('C'),'percT':seq.perc('T'),'percG':seq.perc('G')}
 
+        out: str = '{}\nThe sequence is: {}\n'.format(result, seq.strbases)
+        for i in ops:
+            for name in methods.keys():
+                if i == name:
+                    out += str(methods[name]) + '\n'
+        return out
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((IP, PORT))
-s.listen((MAX_CLIENTS))
+s.listen(MAX_CLIENTS)
 
 while True:
     print('waiting for connections at : {}, {}'.format(IP, PORT))
@@ -55,4 +53,3 @@ while True:
     client_socket.send(info)
     print('Message sent')
     client_socket.close()
-
