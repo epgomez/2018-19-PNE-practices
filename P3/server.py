@@ -1,8 +1,8 @@
 import socket
 from Seq import Seq
 
-PORT = 8046
-IP = '212.128.253.109'
+PORT = 8045
+IP = '212.128.253.107'
 MAX_CLIENTS = 5
 
 def letters(ms):
@@ -54,8 +54,8 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((IP, PORT))
 s.listen((MAX_CLIENTS))
 
-print('waiting for connections at : {}, {}'.format(IP, PORT))
 
+print('waiting for connections at : {}, {}'.format(IP, PORT))
 (client_socket, address) = s.accept()
 
 print("CONNECTION From the IP: {}".format(address))

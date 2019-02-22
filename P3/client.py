@@ -1,7 +1,8 @@
 import socket
 
-port = 8046
-IP = "212.128.253.109"
+port = 8047
+IP = "212.128.253.107"
+
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((IP, port))
