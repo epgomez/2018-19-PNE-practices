@@ -1,0 +1,11 @@
+WEB serrvers
+
+HTTP. language used by a browser(client) and a web server
+
+the GET method doesn't have a body
+4040 code (response message). The requested thing does not exist
+
+
+the <tittle> tag is what appears in the browser tab
+
+<h1> and <p> are tags for the different type of letter
