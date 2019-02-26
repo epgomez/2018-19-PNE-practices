@@ -3,7 +3,7 @@ import termcolor
 
 # Change this IP to yours!!!!!
 IP = "212.128.253.111"
-PORT = 8026
+PORT = 8025
 MAX_OPEN_REQUESTS = 5
 
 
