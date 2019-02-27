@@ -6,7 +6,8 @@ IP = "212.128.253.91"
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((IP, port))
-msg = ''
+msg = """
+"""
 
 s.send(msg.encode())
 

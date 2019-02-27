@@ -9,7 +9,6 @@ def operations(s, cs):
     """This function makes the operations we are requested to do"""
 
     msg = cs.recv(2048).decode('utf-8')
-    print('message:{}'.format(msg))
     msg = msg.partition('\n')
     seq = msg[0].upper()
     seq = Seq(seq)

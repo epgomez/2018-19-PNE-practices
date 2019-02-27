@@ -2,8 +2,8 @@ import socket
 import termcolor
 
 # Change this IP to yours!!!!!
-IP = "212.128.253.111"
-PORT = 8025
+IP = "212.128.253.91"
+PORT = 8022
 MAX_OPEN_REQUESTS = 5
 
 
@@ -15,46 +15,53 @@ def process_client(cs):
     msg = cs.recv(2048).decode("utf-8")
 
     # Print the received message, for debugging
-    print()
-    print("Request message: \n{}".format(msg))
-    request = msg.partition('\n')[0].split(' ')[1]
+    if msg != '':
+        print()
+        print("Request message: \n{}".format(msg))
 
-    #check which are the intentions of the user
-    content = ''
-    if request == '/':
-        with open('index.html', 'r') as f:
-            for line in f:
-                content += line
-            content = str(content)
+        # getting the server the client wants to access
+        request = msg.partition('\n')[0].split(' ')[1]
 
-    elif request == '/blue':
-        with open('blue.html', 'r') as f:
-            for line in f:
-                content += line
-            content = str(content)
+        # answering the user depending on his request
+        content = ''
+        if request == '/':
+            with open('index.html', 'r') as f:
+                for line in f:
+                    content += line
+                content = str(content)
 
-    elif request == '/pink':
-        with open('pink.html', 'r') as f:
-            for line in f:
-                content += line
-            content = str(content)
+        elif request == '/blue':
+            with open('blue.html', 'r') as f:
+                for line in f:
+                    content += line
+                content = str(content)
 
+        elif request == '/pink':
+            with open('pink.html', 'r') as f:
+                for line in f:
+                    content += line
+                content = str(content)
+
+        else:
+            with open('error.html', 'r') as f:
+                for line in f:
+                    content += line
+                content = str(content)
+
+        # response message
+        status_line = 'HTTP/1.1 200 OK\r\n'
+
+        header = 'Content-type: text/HTML\r\n'
+
+        header += 'Content-lenght: {}\r\n'.format(len(str.encode(content)))
+
+        reponse_message = status_line + header + '\r\n' + content
+
+        cs.send(str.encode(reponse_message))
+
+    # in case there's an empty request message
     else:
-        with open('error.html', 'r') as f:
-            for line in f:
-                content += line
-            content = str(content)
-
-    #response message
-    status_line = 'HTTP/1.1 200 OK\r\n'
-
-    header = 'Content-type: text/HTML\r\n'
-
-    header += 'Content-lenght: {}\r\n'.format(len(str.encode(content)))
-
-    reponse_message = status_line + header + '\r\n' + content
-
-    cs.send(str.encode(reponse_message))
+        print('empty request message!!')
 
     # Close the socket
     cs.close()
