@@ -1,20 +1,21 @@
 import socket
 from Seq import Seq
 
-PORT = 8048
-IP = '212.128.253.107'
+PORT = 8046
+IP = '212.128.253.91'
 MAX_CLIENTS = 5
 
 def operations(s, cs):
     """This function makes the operations we are requested to do"""
 
     msg = cs.recv(2048).decode('utf-8')
+    print('message:{}'.format(msg))
     msg = msg.partition('\n')
     seq = msg[0].upper()
     seq = Seq(seq)
     ops = msg[2].split('\n')
 
-    if msg[0] == ' ':
+    if msg[0] == '':
         result = 'ALIVE'
 
     elif not (msg[0].upper().strip('ACTG') == ''):
@@ -31,9 +32,10 @@ def operations(s, cs):
 
         out: str = '{}\nThe sequence is: {}\n'.format(result, seq.strbases)
         for i in ops:
-            for name in methods.keys():
-                if i == name:
-                    out += str(methods[name]) + '\n'
+            if i in methods.keys():
+                out += str(methods[i]) + '\n'
+            else:
+                out += 'Sorry, that is not a registered operation\n'
         return out
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
