@@ -28,25 +28,21 @@ def process_client(cs):
             with open('index.html', 'r') as f:
                 for line in f:
                     content += line
-                content = str(content)
 
         elif request == '/blue':
             with open('blue.html', 'r') as f:
                 for line in f:
                     content += line
-                content = str(content)
 
         elif request == '/pink':
             with open('pink.html', 'r') as f:
                 for line in f:
                     content += line
-                content = str(content)
 
         else:
             with open('error.html', 'r') as f:
                 for line in f:
                     content += line
-                content = str(content)
 
         # response message
         status_line = 'HTTP/1.1 200 OK\r\n'
