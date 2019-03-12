@@ -1,0 +1,6 @@
+we want to send info from the client to the server using the http protocol
+
+special tag "<form>"
+inside, you have:
+action=whatever, that tells the server the resource the client is asking for when the msg is sent
+method=whatever tells the client how to send the info to the server (the method used)

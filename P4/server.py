@@ -23,26 +23,21 @@ def process_client(cs):
         request = msg.partition('\n')[0].split(' ')[1]
 
         # answering the user depending on his request
-        content = ''
         if request == '/':
             with open('index.html', 'r') as f:
-                for line in f:
-                    content += line
+                content = f.read()
 
         elif request == '/blue':
             with open('blue.html', 'r') as f:
-                for line in f:
-                    content += line
+                content = f.read()
 
         elif request == '/pink':
             with open('pink.html', 'r') as f:
-                for line in f:
-                    content += line
+                content = f.read()
 
         else:
             with open('error.html', 'r') as f:
-                for line in f:
-                    content += line
+                content = f.read()
 
         # response message
         status_line = 'HTTP/1.1 200 OK\r\n'

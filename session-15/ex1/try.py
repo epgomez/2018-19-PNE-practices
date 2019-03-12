@@ -1,0 +1,1 @@
+print('/echo?msg='[1:5])

@@ -14,7 +14,6 @@ class TestHandler (http.server.BaseHTTPRequestHandler):
         print(' Path: ' + self.path)
 
         valid_paths = ['/', '/blue', '/pink']
-        content=''
         path = self.path
 
         if path in valid_paths:
@@ -22,13 +21,11 @@ class TestHandler (http.server.BaseHTTPRequestHandler):
                 path = 'index'
             file = path.strip('/') + '.html'
             with open(file, 'r') as f:
-                for line in f:
-                    content += line
+                content = f.read()
 
         else:
             with open('error.html', 'r') as f:
-                for line in f:
-                    content += line
+                content = f.read()
 
         self.send_response(200)
         self.send_header('Content-Type', 'text/html')
