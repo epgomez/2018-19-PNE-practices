@@ -5,7 +5,6 @@ from Seq import Seq
 
 PORT = 8002
 
-
 class TestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -86,7 +85,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(str.encode(content))
 
         return
-
 
 Handler = TestHandler
 
