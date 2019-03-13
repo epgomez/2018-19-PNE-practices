@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Seq analysis</title>
+  </head>
+  <body>
+    <h3>Analysis of DNA sequences</h3>
+
+    <form action="seq" method="get">
+      Enter your sequence:  <input type="text" name="msg">
+      <br><br>
+      Len:
+      <input type="checkbox" name="chk">
+      <br><br>
+      Choose operation:
+      <select name="operation">
+        <option value="count">Count</option>
+        <option value="perc">Percentage</option>
+      </select>
+      <br><br>
+      Select a base:
+      <input type="radio" name="base" value="A" checked> A
+      <input type="radio" name="base" value="C"> C
+      <input type="radio" name="base" value="T"> T
+      <input type="radio" name="base" value="G"> G
+      <br><br>
+      <br>
+        <input type="submit"/>
+    </form>
+
+  </body>
+</html>
