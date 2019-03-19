@@ -1,0 +1,6 @@
+
+We are storing the data of a person in the JSON file as a new object
+
+The JSOIN format only has objects and arrays (['blabala','blolbob', 'etc'])
+
+we can combine arrays and objects (see person.json "phonenumber"  category)

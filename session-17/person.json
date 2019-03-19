@@ -1,0 +1,23 @@
+
+[{
+  "Firstname": "Troll",
+  "Lastname": "Face",
+  "age": "20",
+  "phonenumber": [    {"number": "1111-1111", "type":  "home"},
+    {"number": "2222-2222", "type":  "office"}]
+},
+{
+"Firstname": "Sax",
+  "Lastname": "guy",
+  "age": "40",
+  "phonenumber": [{"number": "9999-5464", "type":  "home"}]
+ },
+  {
+  "Firstname": "Rocky",
+  "Lastname": "Rickroll",
+  "age": "60",
+  "phonenumber": [
+    {"number": "1111-1111", "type":  "dance floor"},
+    {"number": "253422", "type":  "mobile"},
+    {"number": "23244433", "type":  "fortnite"}]
+  }]

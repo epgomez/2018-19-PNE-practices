@@ -3,7 +3,7 @@ import socketserver
 import termcolor
 from Seq import Seq
 
-PORT = 8002
+PORT = 8003
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
 
@@ -16,8 +16,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         if path == '/':
             f = open("index.html", 'r')
             content = f.read()
+            resp=200
 
         elif path[:4] == '/seq':
+            resp=200
             msg = path.split('&')
             seq = msg[0].split('=')[1]
             if seq.upper().strip('ACTG') == '':
@@ -74,10 +76,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 content = f.read()
 
         else:
+            resp=404
             f = open('error.html', 'r')
             content = f.read()
 
-        self.send_response(200)
+        self.send_response(resp)
         self.send_header('Content-Type', 'text/html')
         self.send_header('Content-Length', len(str.encode(content)))
         self.end_headers()
@@ -90,7 +93,7 @@ Handler = TestHandler
 
 # Open the socket server
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print("Serving at POR: ", PORT)
+    print("Serving at PORT: ", PORT)
 
     # Main loop: Attend the client. Whenever there is a new
     # clint, the handler is called
