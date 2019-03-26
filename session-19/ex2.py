@@ -17,7 +17,6 @@ conn = http.client.HTTPSConnection(HOSTNAME)
 
 try:
     conn.request(METHOD, ENDPOINTS[0] + city, None, headers)
-
     r1 = conn.getresponse()
 
     text_json = r1.read().decode("utf-8")
