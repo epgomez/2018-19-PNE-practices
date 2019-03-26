@@ -29,3 +29,27 @@ data1 = r1.read().decode("utf-8")
 msg = json.loads(data1)
 
 seq = Seq(msg['seq'])
+
+#How many bases are there in the FRAT1 gene?
+#How many T bases are there in the FRAT1 gene?
+#Which base is the most popular in the FRAT1 gene? What is its percentage?
+#Calculate the percentage of all the bases in the FRAT1 gene
+
+lenght = seq.len()
+count_t = seq.count('T')
+
+bases = ('A','C','T','G')
+numbases = ''
+popular=''
+for i in bases:
+    if seq.count(i)>numbases: popular, numbases = i, seq.count(i)
+
+print('Lenght: {}'.format(lenght))
+print()
+print('Number of T: {}'.format(count_t))
+print()
+print('The most popular base is {}, its percentage is {}%'.format(popular, seq.perc(popular)))
+print()
+termcolor.cprint('Percentages: ', 'green')
+for i in bases:
+    print('  Base {}: {}%'.format(i,seq.perc(i)))

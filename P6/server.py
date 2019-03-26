@@ -3,7 +3,7 @@ import socketserver
 import termcolor
 from Seq import Seq
 
-PORT = 8003
+PORT = 8001
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
 
@@ -18,7 +18,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             content = f.read()
             resp=200
 
-        elif path[:4] == '/seq':
+        elif (path[:4] == '/seq' and '=' in path):
             resp=200
             msg = path.split('&')
             seq = msg[0].split('=')[1]
