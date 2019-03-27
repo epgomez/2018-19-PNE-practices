@@ -50,4 +50,4 @@ print()
 print('User {} has {} repositroies'.format(GITHUB_ID, str(len(repos))))
 print()
 for i, elem in enumerate(repos):
-    print('Repository number {} is : {}'.format(i, elem['name']))
+    print('  Repository number {} is : {}'.format(i, elem['name']))
