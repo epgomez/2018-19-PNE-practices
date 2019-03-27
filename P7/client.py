@@ -40,7 +40,7 @@ count_t = seq.count('T')
 
 bases = ('A','C','T','G')
 numbases = ''
-popular=''
+
 for i in bases:
     if seq.count(i)>numbases: popular, numbases = i, seq.count(i)
 
