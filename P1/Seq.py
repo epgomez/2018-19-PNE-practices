@@ -39,7 +39,7 @@ class Seq:
         counter= seq.count(base)
         tl = len(seq)
         if tl>0:
-            return round(100.0 * counter/tl, 1)
+            return round(100.0 * counter/tl, 2)
         else:
             return 0
 

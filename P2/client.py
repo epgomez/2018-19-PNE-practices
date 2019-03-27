@@ -4,7 +4,7 @@ from Seq import Seq
 
 print('socket created')
 port = 8080
-IP = "212.128.253.103"
+IP = "212.128.253.108"
 
 #ask the user for a sequence
 while True:

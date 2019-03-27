@@ -1,12 +1,15 @@
 import socket
 
-port = 8046
-IP = "212.128.253.91"
+port = 8044
+IP = "212.128.253.108"
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((IP, port))
-msg = """
+msg = """actg
+len
+countT
+aaa
 """
 
 s.send(msg.encode())

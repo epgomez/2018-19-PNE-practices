@@ -6,10 +6,9 @@ s3 = s1.complement()
 s4 = (Seq(s3)).reverse()
 
 seqs = [s1,s2,Seq(s3),Seq(s4)]
-order = [1,2,3,4]
 
-for elem, i in zip(seqs, order):
-    print('Sequence {}: {}'.format(i,elem.strbases.upper()))
+for i, elem in enumerate(seqs):
+    print('Sequence {}: {}'.format(i+1,elem.strbases.upper()))
     print('Lenght of the sequence: ', elem.len())
     bases = ['A', 'C', 'T', 'G']
     for i in bases:

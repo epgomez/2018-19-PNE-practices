@@ -1,4 +1,5 @@
-n: str=input('Enter your chain (If you enter a letter that doesn\'t represent a base, it will be deleted and it will not be co nsidered for the totel lenght): ')
+n: str=input("""Enter your chain (If you enter a letter that doesn\'t represent a base,
+ it will be deleted and it will not be considered for the total lenght): """)
 n = n.lower()
 lenght=len(n)
 for i in n:

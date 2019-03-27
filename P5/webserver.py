@@ -1,7 +1,7 @@
 import http.server
 import socketserver
 
-PORT = 8002
+PORT = 8000
 
 class TestHandler (http.server.BaseHTTPRequestHandler):
 

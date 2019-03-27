@@ -1,8 +1,8 @@
 import socket
 from Seq import Seq
 
-PORT = 8046
-IP = '212.128.253.91'
+PORT = 8044
+IP = '212.128.253.108'
 MAX_CLIENTS = 5
 
 def operations(s, cs):
@@ -34,7 +34,8 @@ def operations(s, cs):
             if i in methods.keys():
                 out += str(methods[i]) + '\n'
             else:
-                out += 'Sorry, that is not a registered operation\n'
+                if not (i ==''):
+                    out += 'Sorry, that is not a registered operation\n'
         return out
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

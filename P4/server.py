@@ -2,7 +2,7 @@ import socket
 import termcolor
 
 # Change this IP to yours!!!!!
-IP = "212.128.253.91"
+IP = "212.128.253.108"
 PORT = 8023
 MAX_OPEN_REQUESTS = 5
 
@@ -64,7 +64,7 @@ def process_client(cs):
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Bind the socket to the IP and PORT
-serversocket.bind((IP, PORT))
+serversocket.bind(('', PORT))
 
 # Configure the server sockets
 # MAX_OPEN_REQUESTS connect requests before refusing outside connections

@@ -1,7 +1,6 @@
 import http.client
 import json
 
-
 HOSTNAME = "api.github.com"
 ENDPOINTS = ["/users/", '/repos/']
 GITHUB_ID = input('Enter the user you want to check: ')
@@ -22,6 +21,7 @@ user = json.loads(text_json)
 
 name = user['name']
 
+
 conn.request(METHOD, ENDPOINTS[1] + GITHUB_ID + '/2018-19-PNE-practices/commits', None, headers)
 r2 = conn.getresponse()
 
@@ -32,6 +32,7 @@ commits = json.loads(text_json2)
 
 num_commits = len(commits)
 
+
 conn.request(METHOD, ENDPOINTS[0] + GITHUB_ID + '/repos', None, headers)
 r3 = conn.getresponse()
 
@@ -41,6 +42,7 @@ text_json3 = r3.read().decode("utf-8")
 repos = json.loads(text_json3)
 
 conn.close()
+
 
 print()
 print("User's total name: {}".format(name))

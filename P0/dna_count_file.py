@@ -1,9 +1,6 @@
 with open('dna.txt', 'r') as n:
     lenght = 0
-    a = 0
-    c = 0
-    t = 0
-    g = 0
+    a, c, t, g = 0, 0, 0, 0
     for line in n:
         str(line)
         line = line.lower()
