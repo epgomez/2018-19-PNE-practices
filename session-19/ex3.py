@@ -10,7 +10,6 @@ headers = {'User-Agent': 'http-client'}
 
 conn = http.client.HTTPSConnection(HOSTNAME)
 
-
 conn.request(METHOD, ENDPOINTS[0] + GITHUB_ID, None, headers)
 r1 = conn.getresponse()
 

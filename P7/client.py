@@ -1,5 +1,3 @@
-# -- Example of a client that uses the HTTP.client library
-# -- for requesting the main page from the server
 import http.client
 import json
 import termcolor
