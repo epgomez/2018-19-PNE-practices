@@ -34,6 +34,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             code = 200
             # Read the file
             contents = f.read()
+            print(type(contents))
             #THE CONTENT TYPE IS DIFFERENT
             #VERY IMPORTANT
             content_type = 'application/json'
